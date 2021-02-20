@@ -1,3 +1,4 @@
+import java.util.Scanner;
 
 public class Checker {
 
@@ -7,10 +8,10 @@ public class Checker {
 		if(number % 2 == 0) { //checks id the number is even
 			IsEven = true;
 			if(IsEven == true) {
-				System.out.println("This is " + IsEven + " " + number + " is EVEN!");
+				System.out.println("This is " + IsEven + " " + number + " is even!");
 			}
 		}else {
-			System.out.println("This is " + IsEven + " " + number + " is NOT EVEN!");
+			System.out.println("This is " + IsEven + " " + number + " is NOT even!");
 		}
 	} //end of IsEven method
 	
@@ -20,11 +21,11 @@ public class Checker {
 			IsOdd = true;
 			
 			if(IsOdd == true) {
-				System.out.println("This is " + IsOdd + " " + number + " is ODD!");
+				System.out.println("This is " + IsOdd + " " + number + " is odd!");
 			}//end of inner if statement
 			
 		}else {
-			System.out.println("This is " + IsOdd + " " + number + " is NOT ODD!");
+			System.out.println("This is " + IsOdd + " " + number + " is NOT odd!");
 		}
 	}//end of IsOdd method
 	
@@ -33,24 +34,35 @@ public class Checker {
 		boolean IsPrime = false;
 		if(IsPrime == false) {
 			
-			for(int n = 2; n < number;n++) {
+			for(int n = 2; n < number;) {
 				if( number <= 1 || number % n == 0 ) { //checks id the number is NOT prime
 					IsPrime = false;
-					System.out.println("This is " + IsPrime + " " + number + " is  NOT Prime!");
+					System.out.println("This is " + IsPrime + " " + number + " is  NOT prime!");
 					break;
 				}
 				else{ //sets it as prime if the if statement conditions are false
 					IsPrime = true;
-					System.out.println("This is " + IsPrime + " " + number + " is Prime!");
-				}//end of while loop
+					System.out.println("This is " + IsPrime + " " + number + " is prime!");
+					break;
+				}//end of else statement
+				
 			}//end of for loop
 		}
 	}//end of IsPrime method
 	
 	public static void main(String[] args) {
-	
-		Checker.IsEven(8);
-		Checker.IsOdd(8);
+		Scanner user = new Scanner(System.in);
+		System.out.println("What number do you want to check is even odd or prime?: ");
+		String input = user.nextLine();
+	    user.close();
+		
+		Checker.IsEven(Integer.parseInt(input));
+		Checker.IsOdd(Integer.parseInt(input));
+		Checker.IsPrime(Integer.parseInt(input));
+		
+		//old test cases below
+		
+		/*Checker.IsOdd(8);
 		Checker.IsPrime(8);
 		System.out.println();
 		
@@ -61,7 +73,7 @@ public class Checker {
 		
 		Checker.IsEven(30);
 		Checker.IsOdd(30);
-		Checker.IsPrime(30);
+		Checker.IsPrime(30); */
 	}//end of main method
 	
 }//end of Checker method
